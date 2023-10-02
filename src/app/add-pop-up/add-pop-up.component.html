@@ -1,0 +1,27 @@
+<mat-card class="p-3">
+    <mat-card-header class="text-center">
+        <h3>Add Customer</h3>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="example-form" [formGroup]="customerForm" (ngSubmit)="submitUser()">
+            <mat-form-field class="example-full-width w-100 mb-2" hintLabel="Max 25 characters">
+                <mat-label>Name</mat-label>
+                <input matInput #name formControlName="name" minlength="2" maxlength="25">
+                <mat-hint align="end">{{name.value.length}}/25</mat-hint>
+            </mat-form-field>
+            <mat-form-field class="example-full-width w-100 mb-2">
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="address" minlength="5" maxlength="30">
+            </mat-form-field>
+            <mat-form-field class="example-full-width w-100 mb-2" hintLabel="Enter 10 digit number">
+                <mat-label>Mobile Number</mat-label>
+                <input type="text" #mNo matInput formControlName="mobile" minlength="10" maxlength="10">
+                <mat-hint align="end">{{mNo.value.length}}/10</mat-hint>
+            </mat-form-field>
+            <div class="example-full-width d-flex align-items-center justify-content-center">
+                <button type="submit" mat-raised-button color="primary" class="m-10 mx-2">Add</button>
+                <a mat-raised-button color="accent" mat-dialog-close="" class="mx-2">Close</a>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,57 @@
+<nav class="navbar bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Customer CRUD</a>
+    <button mat-raised-button color="accent" (click)="addCustomer()">Add Customer</button>
+  </div>
+</nav>
+
+<div class="container my-5 px-5">
+  <div class="mat-elevation-z8">
+    <!-- <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
+  </mat-form-field> -->
+    <table mat-table [dataSource]="dataSource">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.customerId}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.customerName}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="Address">
+        <th mat-header-cell *matHeaderCellDef> Address </th>
+        <td mat-cell *matCellDef="let element"> {{element.customerAddress}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="MobileNo">
+        <th mat-header-cell *matHeaderCellDef> Mobile No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.mobileNo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef class="text-center"> Action </th>
+        <td mat-cell *matCellDef="let element" class="text-center">
+          <button (click)="updateCustomer(element.customerId)" mat-raised-button color="primary"
+            class="m-10 mx-2">Update</button>
+          <button (click)="deleteCustomer(element.customerId)" mat-raised-button color="warn"
+            class="m-10">Delete</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of customers">
+    </mat-paginator>
+  </div>
+</div>
